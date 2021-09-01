@@ -17,8 +17,18 @@ def isPalindrome(str):
             return True
 
 def coins(cash):
-    pass
-
+    coin_type = {'quarters': 25, 'dimes': 10, 'nickels': 5, 'pennys': 1}
+    change = {}
+    for coin in coin_type:
+        if coin_type[coin] <= cash:
+            change[coin] = cash//coin_type[coin]
+            cash = cash%coin_type[coin]
+        else:
+            change[coin] = 0
+    list_change = []
+    for coin in change:
+        list_change.append(change[coin])
+    return list_change
 
     #UNIT TESTS
 class revListTest(unittest.TestCase):

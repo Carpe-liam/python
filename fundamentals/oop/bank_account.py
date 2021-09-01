@@ -24,7 +24,7 @@ class BankAccount:
             return self
 
     def display_account_info(self):
-        print("Balance: " + str(self.balance))
+        print("Balance: " + str(self.balance) + " Interest Rate: " + str(self.int_rate))
 
 
     @staticmethod
@@ -36,7 +36,6 @@ class BankAccount:
 
     @classmethod
     def all_balances(cls):
-        sum =0
         for account in cls.all_accounts:
             account.display_account_info()
 ################################################
