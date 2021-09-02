@@ -1,0 +1,11 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: 'Gill Sans', sans-serif;
+}
+#head{
+    text-color: {{color2}};
+    background: {{color1}};
+    text-align: center;
+
+}

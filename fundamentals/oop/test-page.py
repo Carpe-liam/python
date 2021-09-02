@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 thing = [4,2,7,1,5,6,8,9,3,0]
 
 def insertion_sort(list):
@@ -23,18 +22,3 @@ def insertion_sort(list):
 
 
 insertion_sort(thing)
-=======
-# python code below!
-arra = [3,1,6,7,5]
-
-def bubble_sort(arr):
-    for i in range(len(arr)):
-        print(i)
-        if arr[i] > arr[i+1]:
-            arr[i],arr[i+1] = arr[i+1], arr[i]
-            return arr
-    print(arr)
-        
-
-bubble_sort(arra)
->>>>>>> 9454464a48513d66a6b47f42920d6d2645f2bcdd

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkerboard </title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css')}}">
+</head>
+<body>
+    <div id="head">
+        <h1>~~~ Checkerboard ~~~</h1>
+    </div>
+        <div class="conta">
+            {% for i in range(num2) %}
+                <div class="col">
+                    {% for x in range(0, num1) %}
+                        {% if (i+x) % 2 == 0 %}
+                        <div class="row1" style="background: {{color1}};"></div>
+                        {% else %}
+                        <div class="row1" style="background: {{color2}};"></div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            {% endfor %}
+        </div>
+
+
+<style>
+    *{
+    padding: 0;
+    margin: 0;
+    font-family: 'Gill Sans', sans-serif;
+    }
+    #head{
+        background: {{color1}};
+        color: {{color2}};
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    .conta{
+        display: flex;
+        justify-content: center;
+        align-content: center;
+    }
+    .conta div{
+        width: 100px;
+        height: 100px;
+        margin: 1px;
+    }
+
+
+</style>
+
+
+</body>
+</html>
