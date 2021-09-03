@@ -22,10 +22,12 @@ class Ninja:
             pirate.health -= self.shuriken
         else:
             pirate.health = pirate.health
+        self.show_stats()
         return self
 
     def attack2(self, pirate):
         pirate.health -= self.strength
+        self.show_stats()
         return self
 
     def attack3(self, pirate):
@@ -35,6 +37,7 @@ class Ninja:
                 pirate.health -= self.sneak_attack
             else:
                 pirate.health = pirate.health
+            self.show_stats()
             return self
 
     def attack4(self):
@@ -44,6 +47,7 @@ class Ninja:
             self.speed = self.speed + 10
         else:
             print('OH NO! Out of Sushi!!')
+        self.show_stats()
         return self
 
 

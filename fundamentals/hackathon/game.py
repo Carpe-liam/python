@@ -50,25 +50,19 @@ class Game:
         return self.do_action(act)
 
     def do_action(self, act):
-        if act =='1':
-            self.kakashi.attack1(self.jack)
-            self.jack.show_stats()
-            self.kakashi.show_stats()
-        if act =='2':
-            self.kakashi.attack2(self.jack)
-            self.jack.show_stats()
-            self.kakashi.show_stats()
-        if act =='3':
-            self.kakashi.attack3(self.jack)
-            self.jack.show_stats()
-            self.kakashi.show_stats()
-        if act =='4':
-            self.kakashi.health += 10
-            self.kakashi.speed -=5
-            self.kakashi.show_stats()
         if act == 5:
             self.end_game()
 
+        attacks = {
+            '1': self.kakashi.attack1,
+            '2': self.kakashi.attack2,
+            '3': self.kakashi.attack3,
+            '4': self.kakashi.attack4
+        }
+        attacks[act](self.jack)
+        self.jack.show_stats()
+
+        # self.kakashi.show_stats()
 # action_list function which takes input int 
 game_1 = Game()
 game_1.run_game()

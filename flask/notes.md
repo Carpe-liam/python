@@ -1,5 +1,5 @@
 # Flask
-## Virtual Env
+## Virtual Environment
 
 - sandbox style to play in...
 - container
@@ -42,15 +42,21 @@
 
 6. Server.py file -> wil change in time
     ```py
-    from flask import Flask, render template  # Import Flask to allow us to create our app
-    app = Flask(__name__)    # Create a new instance of the Flask class called "app"
-    @app.route('/')          # The "@" decorator associates this route with the function immediately following
-    def hello_world():
-        return 'Hello World!'  # Return the string 'Hello World!' as a response
-    if __name__=="__main__":   # Ensure this file is being run directly and not from a different module    
-        app.run(debug=True)    # Run the app in debug mode.
-    
+    from flask import Flask, render_template, redirect, request, session
 
+    app= Flask(__name__)
+    app.secret_key='wizard'
+
+    @app.route('/')
+    def home():
+        return render_template('index.html')
+
+    @app.route('/return')
+    def return_response():
+        return render_template('return.html')
+
+    if __name__=="__main__":
+        app.run(debug=True)
     ## explination
     '@' = decorator; used in @classmethod @staticmethod
     ```
@@ -59,12 +65,38 @@
     ```
     python <server file name = usually 'server.py'>
     ```
+---
+## Other Notes: Routes
 
-8. Routes
-    - display route -> render view
-    - action route - > perform action(s)
-        - should never display views!!
+### Routes
+- display route -> render view
+- action route - > perform action(s)
+    - should never display views!!
 
-9. Views
-    - What is rendered to the page
-    - 
+### Views
+- What is rendered to the page
+
+
+### Static Files
+- Have a specific way of thow they are displayed in html and linked: 
+    ```py
+    <!-- based on the folder structure on the right -->
+    <!-- linking a css style sheet -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='my_style.css') }}">
+    <!-- linking a javascript file -->
+    <script type="text/javascript" src="{{ url_for('static', filename='my_script.js') }}"></script>
+    <!-- linking an image -->
+    <img src="{{ url_for('static', filename='my_img.png') }}">
+    ```
+
+### Methods ?
+- funtion inside a class..
+- It is the way in which information is passed to the server file.
+    - GET
+        - info passed through the URL
+    - POST
+        - using FORMS - to submit methods
+
+## What is a form?
+- a way to capture info from the end-user
+- 
