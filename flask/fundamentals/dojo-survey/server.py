@@ -7,9 +7,31 @@ app.secret_key='wizard'
 def home():
     return render_template('index.html')
 
-@app.route('/return')
+@app.route('/return', methods=["POST"])
 def return_response():
-    return render_template('return.html')
+    print(request.form)
+    session['name'] = request.form['name']
+    session['location'] = request.form['location']
+    session['language'] = request.form['language']
+    session['comment'] = request.form['comment']
+    if 'agreement' not in request.form:
+        session['agreement'] = "No"
+    else:
+        session['agreement'] = "Yes, I owe you lunch now"
+        if 'lunch' not in request.form:
+            session['lunch'] = "No"
+        else:
+            session['lunch'] = "Yes"
+    return redirect('/results')
+
+@app.route('/results')
+def results():
+    return render_template('result.html')
+
+@app.route('/kill')
+def kill():
+    session.clear()
+    return redirect('/')
 
 if __name__=="__main__":
     app.run(debug=True)
