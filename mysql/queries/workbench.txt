@@ -1,0 +1,10 @@
+SELECT * from users;
+
+INSERT INTO users (name)
+VALUES ("Karma"), ("Eevee");
+
+UPDATE users
+SET users.name = "Alex"
+WHERE users.id =1;
+
+DELETE FROM users WHERE users.name ="Alex";

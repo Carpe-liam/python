@@ -1,0 +1,31 @@
+INSERT INTO users (first_name, last_name, email)
+VALUES ("Karma", "JOSIN", "kJosin@gmail.com");
+
+INSERT INTO users (first_name, last_name, email)
+VALUES ("Monty", "Python", "king_of_camelot@holygrails.com");
+
+INSERT INTO users (first_name, last_name, email)
+VALUES ("Benedict", "Cucumber-patch", "magic-is-SUS@time.net");
+
+SELECT * FROM users;
+
+SELECT users.first_name, users.last_name FROM users
+WHERE users.email = "king_of_camelot@holygrails.com";
+
+SELECT users.first_name, users.last_name FROM users
+WHERE users.id = 6;
+
+UPDATE users
+SET users.last_name = "Pancakes"
+WHERE users.id = 3;
+
+DELETE FROM users
+WHERE users.id = 2; 
+
+SELECT * FROM users
+ORDER BY users.first_name;
+
+SELECT users.first_name, users.last_name FROM users
+ORDER BY users.first_name DESC;
+
+SELECT * FROM users;
