@@ -1,0 +1,26 @@
+127.0.0.1 - - [06/Sep/2021 14:19:20] "GET /update HTTP/1.1" 500 -
+Traceback (most recent call last):      
+  File "C:\Users\alexa\.virtualenvs\FIRST_FLASK_MYSQL-yQnh0DqU\Lib\site-packages\flask\app.py", line 2088, in __call__  
+    return self.wsgi_app(environ, start_response)
+  File "C:\Users\alexa\.virtualenvs\FIRST_FLASK_MYSQL-yQnh0DqU\Lib\site-packages\flask\app.py", line 2073, in wsgi_app  
+    response = self.handle_exception(e) 
+  File "C:\Users\alexa\.virtualenvs\FIRST_FLASK_MYSQL-yQnh0DqU\Lib\site-packages\flask\app.py", line 2070, in wsgi_app  
+    response = self.full_dispatch_request()
+  File "C:\Users\alexa\.virtualenvs\FIRST_FLASK_MYSQL-yQnh0DqU\Lib\site-packages\flask\app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)  
+  File "C:\Users\alexa\.virtualenvs\FIRST_FLASK_MYSQL-yQnh0DqU\Lib\site-packages\flask\app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()        
+  File "C:\Users\alexa\.virtualenvs\FIRST_FLASK_MYSQL-yQnh0DqU\Lib\site-packages\flask\app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)  File "C:\Users\alexa\python\flask_mysql\intro\FIRST_FLASK_MYSQL\server.py", line 18, in update
+    return render_template("updated.html", friends=friends)
+  File "C:\Users\alexa\.virtualenvs\FIRST_FLASK_MYSQL-yQnh0DqU\Lib\site-packages\flask\templating.py", line 147, in render_template
+    return _render(
+  File "C:\Users\alexa\.virtualenvs\FIRST_FLASK_MYSQL-yQnh0DqU\Lib\site-packages\flask\templating.py", line 128, in _render
+    rv = template.render(context)       
+  File "C:\Users\alexa\.virtualenvs\FIRST_FLASK_MYSQL-yQnh0DqU\Lib\site-packages\jinja2\environment.py", line 1304, in render
+    self.environment.handle_exception() 
+  File "C:\Users\alexa\.virtualenvs\FIRST_FLASK_MYSQL-yQnh0DqU\Lib\site-packages\jinja2\environment.py", line 925, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\alexa\python\flask_mysql\intro\FIRST_FLASK_MYSQL\templates\updated.html", line 10, in top-level template code
+    {% for one_friend in friends %}     
+TypeError: 'NoneType' object is not iterable
