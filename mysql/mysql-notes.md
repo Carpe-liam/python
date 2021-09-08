@@ -328,4 +328,19 @@ otherwise select continue
 10. Refresh your schemas if it's not on the list
 11. DONE!
 
+# MVC
+## Module - templates/HTML
+1. May build database tables
+2. Handles logic that relies on data
+3. Interfaces with the database
+
+## View - 
+1. HTML page that gets served to the client
+2. May contain some logic to be handled by a template engine
+
+## Controller(s)
+1. Receives incoming requests
+2. Minimal logic
+3. Calls on models to aggregate/process data
+4. Determines appropriate response
 
