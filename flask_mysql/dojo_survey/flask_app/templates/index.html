@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dojo Survey Index</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+</head>
+<body class="bg-dark text-light">
+    <div></div>
+
+
+    <div class="container bg-secondary rounded col-5 m-3 p-3 mx-auto text-center">
+        <div class="m-2">
+            {% with messages = get_flashed_messages() %}     <!-- declare a variable called messages -->
+                {% if messages %}                            <!-- check if there are any messages -->
+                    {% for message in messages %}            <!-- loop through the messages -->
+                        <p>{{message}}</p>                   <!-- display each message in a paragraph tag -->
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        </div>
+        <h2> Dojo Survey</h2>
+        <form action="/validate" method="POST">
+            <div class="m-3">
+                <label for="name" class="form-label">Name: </label>
+                <input type="text" class=form-control name='name'>
+            </div>
+            <div class="m-3">
+                <label for="location" class="form-label">Dojo Location: </label>
+                <select class="form-select" name="location">
+                    <option selected value="">choose</option>
+                    <option value="London">London</option>
+                    <option value="Athens">Athens</option>
+                    <option value="Dallas">Dallas</option>
+                    <option value="Auckland">Auckland</option>
+                    <option value="Online">Online</option>
+                </select>
+            </div>
+            <div class="m-3">
+                <label for="language" class="form-label">Favorite Language: </label>
+                    <select class="form-select" name="language">
+                    <option selected value="">choose</option>
+                    <option value="Java">Java</option>
+                    <option value="Python">Python</option>
+                    <option value="MERN">MERN</option>
+                    <option value="C#">C#</option>
+                    <option value="Ruby">Ruby</option>
+                </select>
+            </div>
+            <div class="m-3">
+                <label class="m-3" for="comment">Comments (optional):</label>
+                <textarea class="rounded form-control" name="comment" id="" cols="43" rows="6"></textarea>
+            </div>
+        <!--    <div>
+                <label class="form-check-label" type="checkbox" for="agreement">Above info is correct</label>
+                <input class="form-check-input" type="checkbox" id="agreement">
+            </div>
+        -->
+
+
+            <div>
+                <button class="btn btn-warning px-3 m-3" type="submit">Submit</button>
+            </div>
+        </form>
+
+
+
+
+    </div>
+
+
+    <div></div>
+</body>
+</html>

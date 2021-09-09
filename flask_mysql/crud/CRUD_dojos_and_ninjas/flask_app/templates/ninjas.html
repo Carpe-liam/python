@@ -21,30 +21,30 @@
             </div>
         </div>
 
-        <form action="/update'" method="POST">
+        <form action="/create" method="POST">
             <div class="mb-3">
-                <label for="first_name" class="form-label">Dojo:</label>
-                <select class="form-select" name="first_name">
+                <label for="dojo_id" class="form-label">Dojo:</label>
+                <select class="form-select" name="dojo_id">
                     <option selected></option>
-                    <option value="1">delta</option>
-                    <option value="2">epsilon</option>
-                    <option value="3">foxtrot</option>
+                    {% for dojo in dojos %}
+                    <option name="dojo_id" value="{{dojo.id}}">{{dojo.name}}</option>
+                    {% endfor %}
                 </select>
             </div>
             <div class="mb-3">
-                <label for="last_name" class="form-label">Last Name:</label>
+                <label for="first_name" class="form-label"> First Name: </label>
+                <input type="text" class="form-control" name="first_name">
+            </div>
+            <div class="mb-3">
+                <label for="last_name" class="form-label"> Last Name: </label>
                 <input type="text" class="form-control" name="last_name">
             </div>
             <div class="mb-3">
-                <label for="email" class="form-label">Email:</label>
-                <input type="text" class="form-control" name="email">
-            </div>
-            <div class="mb-3">
-                <label for="age" class="form-label">Age:</label>
+                <label for="age" class="form-label"> Age: </label>
                 <input type="text" class="form-control" name="age">
             </div>
             <div class="m-3">
-                <button class="btn btn-dark px-4 me-4">Create</button>
+                <button class="btn btn-dark px-4 me-4"> Create </button>
             </div>
 
         </form>

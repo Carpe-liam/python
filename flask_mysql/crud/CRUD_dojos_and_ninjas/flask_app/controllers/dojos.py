@@ -1,7 +1,8 @@
 from flask_app import app
 from flask import render_template, redirect, request, session, flash
 from flask_app.models.dojo import Dojo
-
+from flask_app.models.ninja import Ninja
+from flask_app.controllers import ninjas
 
 @app.route('/')
 def home():
@@ -13,10 +14,26 @@ def dojos():
     print(dojos)
     return render_template("dojos.html", dojos=dojos)
 
-@app.route('/ninjas')
-def create_ninja():
-    return render_template("ninjas.html")
 
-@app.route('/create_dojo')
+@app.route('/dojos/<int:id>')
+def show_dojo(id):
+    data = {
+        'id' : id
+    }
+    ninjas = Ninja.dojo_ninjas(data)
+    return render_template("one_dojo.html", ninjas=ninjas)
+
+
+
+
+
+
+
+
+@app.route('/create_dojo', methods=["POST"])
 def create_dojo():
-    return render_template("one_dojo.html")
+    data = {
+        "name" : request.form['name']
+    }
+    Dojo.new_dojo(data)
+    return redirect('/dojos')

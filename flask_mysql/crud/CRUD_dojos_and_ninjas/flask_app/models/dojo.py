@@ -17,3 +17,16 @@ class Dojo:
         for dojo in results:
             dojos.append(cls(dojo))
         return dojos
+    
+    @classmethod
+    def get_dojo(cls,data):
+        query = "SELECT * FROM dojos WHERE dojos.id = %(id)s;"
+        results = connectToMySQL('dojos-and-ninjas-dojo_schema').query_db(query,data)
+        dojo = cls(results[0])
+        return dojo
+
+    @classmethod
+    def new_dojo(cls, data):
+        query = "INSERT INTO dojos (name, created_at, updated_at) VALUES (%(name)s, NOW(), NOW() );"
+        return connectToMySQL('dojos-and-ninjas-dojo_schema').query_db(query, data)
+
