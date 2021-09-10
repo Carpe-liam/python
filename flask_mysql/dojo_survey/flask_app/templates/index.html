@@ -13,19 +13,18 @@
 
     <div class="container bg-secondary rounded col-5 m-3 p-3 mx-auto text-center">
         <div class="m-2">
-            {% with messages = get_flashed_messages() %}     <!-- declare a variable called messages -->
-                {% if messages %}                            <!-- check if there are any messages -->
-                    {% for message in messages %}            <!-- loop through the messages -->
-                        <p>{{message}}</p>                   <!-- display each message in a paragraph tag -->
-                    {% endfor %}
-                {% endif %}
-            {% endwith %}
+
+
+
         </div>
         <h2> Dojo Survey</h2>
         <form action="/validate" method="POST">
             <div class="m-3">
                 <label for="name" class="form-label">Name: </label>
                 <input type="text" class=form-control name='name'>
+                {% for message in  get_flashed_messages(category_filter='name')  %}
+                    <p class="alert alert-danger">{{message}}</p> 
+                {% endfor %}    
             </div>
             <div class="m-3">
                 <label for="location" class="form-label">Dojo Location: </label>
@@ -37,6 +36,9 @@
                     <option value="Auckland">Auckland</option>
                     <option value="Online">Online</option>
                 </select>
+                {% for message in  get_flashed_messages(category_filter='location')  %}
+                <p class="alert alert-danger">{{message}}</p> 
+            {% endfor %}   
             </div>
             <div class="m-3">
                 <label for="language" class="form-label">Favorite Language: </label>
@@ -48,6 +50,9 @@
                     <option value="C#">C#</option>
                     <option value="Ruby">Ruby</option>
                 </select>
+                {% for message in  get_flashed_messages(category_filter='language')  %}
+                <p class="alert alert-danger">{{message}}</p> 
+            {% endfor %}   
             </div>
             <div class="m-3">
                 <label class="m-3" for="comment">Comments (optional):</label>

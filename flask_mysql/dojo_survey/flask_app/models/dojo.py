@@ -32,14 +32,19 @@ class Survey:
 
     @staticmethod
     def validate_survey(survey): #survey IS request.form
-        is_valid = True
+        errors = {}
         if len(survey['name']) < 3:
-            flash('Name should be at least 3 characters.')
-            is_valid = False
+            errors['name'] = 'Name should be at least 3 characters.'
+            #flash('Name should be at least 3 characters.')
+            #is_valid = False
         if survey['location'] not in ['London', 'Athens', 'Dallas', 'Auckland', 'Online']:
-            flash('Location should one of the following options.')
-            is_valid = False
+            errors['location'] = 'Location should one of the following options.'
+            #flash('Location should one of the following options.')
+            #is_valid = False
         if survey['language'] not in ['Java', 'Python', 'MERN', 'C#', 'Ruby']:
-            flash('Language should one of the following options.')
-            is_valid = False
-        return is_valid
+            errors['language'] = 'Language should one of the following options.'
+            #flash('Language should one of the following options.')
+            #is_valid = False
+        for category,message in errors.items():
+            flash(message,category)
+        return len(errors) == 0

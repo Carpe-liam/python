@@ -15,7 +15,6 @@ class Author:
         query = "SELECT * FROM authors;"
         results = connectToMySQL('dojo_books-schema').query_db(query)
         authors = []
-
         for author in results:
             authors.append(cls(author))
         return authors
