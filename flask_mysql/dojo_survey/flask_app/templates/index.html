@@ -38,7 +38,7 @@
                 </select>
                 {% for message in  get_flashed_messages(category_filter='location')  %}
                 <p class="alert alert-danger">{{message}}</p> 
-            {% endfor %}   
+                {% endfor %}   
             </div>
             <div class="m-3">
                 <label for="language" class="form-label">Favorite Language: </label>
@@ -52,7 +52,7 @@
                 </select>
                 {% for message in  get_flashed_messages(category_filter='language')  %}
                 <p class="alert alert-danger">{{message}}</p> 
-            {% endfor %}   
+                {% endfor %}   
             </div>
             <div class="m-3">
                 <label class="m-3" for="comment">Comments (optional):</label>

@@ -35,15 +35,15 @@ class Survey:
         errors = {}
         if len(survey['name']) < 3:
             errors['name'] = 'Name should be at least 3 characters.'
-            #flash('Name should be at least 3 characters.')
+            #flash('Name should be at least 3 characters.', name)
             #is_valid = False
         if survey['location'] not in ['London', 'Athens', 'Dallas', 'Auckland', 'Online']:
             errors['location'] = 'Location should one of the following options.'
-            #flash('Location should one of the following options.')
+            #flash('Location should one of the following options.', location)
             #is_valid = False
         if survey['language'] not in ['Java', 'Python', 'MERN', 'C#', 'Ruby']:
             errors['language'] = 'Language should one of the following options.'
-            #flash('Language should one of the following options.')
+            #flash('Language should one of the following options.', language)
             #is_valid = False
         for category,message in errors.items():
             flash(message,category)

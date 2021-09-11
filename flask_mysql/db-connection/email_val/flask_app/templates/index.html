@@ -16,8 +16,8 @@
             {% for message in get_flashed_messages() %}
                 <p class="alert alert-danger"> {{message}} </p>
             {% endfor %}
-
         </div>
+
         <form class="m-3 mt-4" action='/validate' method="POST">
             <div class="m-2 d-flex">
                 <label for="email" class="mx-3 form-label">Email</label>
