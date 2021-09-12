@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Show</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+</head>
+<body class="bg-dark">
+    <div></div>
+
+    <div class="container bg-secondary text-light d-flex justify-content between">
+<!-- Start Left Container -->
+        <div class="left col-5 m-3 p-2">
+            <div>
+                <h1>Title: {{book.title}} </h1>
+            </div>
+            <table class="table table-dark table-striped">
+                <table class="table table-dark table-striped">
+                    <tbody>
+                        {% for author in book.authors %}
+                        <tr scope='row'>
+                            <td>
+                                {{ author.name }}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            <div>
+                <a href="/authors" class="btn btn-outline-light px-3">Home</a>
+            </div>
+        </div>
+<!-- Start Right Container -->
+        <div class="right col-5 m-3 p-2 text-center">
+            <div>
+                <h2> Favorite Book </h2>
+            </div>
+            <form class="row" action="/author_fave" method="POST">
+                <label for="author_id" class="form-label">Author:</label>
+                <select class="form-select" name="author_id">
+                    <option selected></option>
+                    {% for author in authors %}
+                    <option name="author_id" value="{{author.id}}">{{author.name}}</option>
+                    {% endfor %}
+                </select>
+                <label for="book_id"></label>
+                <input type="hidden" name="book_id" value={{book.id}}>
+                <div>
+                    <button class="btn btn-primary m-4 px-4" type="submit">Add</button>
+                </div>
+            </form>
+
+        </div>
+<!-- End container -->
+    </div>
+</body>
+</html>

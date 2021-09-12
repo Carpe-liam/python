@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ninja Roster</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+</head>
+<body>
+    <div></div>
+    
+    <div class="container col-6 bg-warning">
+        <header class="d-flex justify-content-around">
+            <h1 class='text-center'> Dojo Ninjas </h1>
+            <div>
+                <a class="btn btn-dark px-3 m-3" href="/dojos">Home</a> 
+            </div>
+        </header>
+        <table class="table table-striped">
+            <thead >
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for ninja in ninjas %}
+                <tr scope='row'>
+                    <td>{{ ninja.first_name }} </td>
+                    <td>{{ ninja.last_name }} </td>
+                    <td>{{ ninja.age}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+<!-- end container -->
+
+
+    <div></div>
+</body>
+</html>
