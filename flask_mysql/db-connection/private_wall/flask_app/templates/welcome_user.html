@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <title>Dashboard</title>
+</head>
+<body>
+    <div class="container bg-dark text-light mx-auto m-3 p-2 rounded ">
+        
+        <div class=" navbar d-flex justify-content-between px-4">
+            <h1>CodingDojo Wall</h1>
+            <div class='d-flex'>
+                <h2 class="mx-3"> {{user.first_name}} {{user.last_name}}'s Profile</h2>
+                <a class="btn btn-outline-danger px-3" href="/logout">Logout</a>
+            </div>    
+        </div>
+
+
+
+        <div class="mainpage d-flex justify-content-between mt-4">
+<!-- Start Left Side -->
+            <div class="left col-5 m-2 mx-auto p-2 bg-secondary rounded">
+                <h4 class='text-center'> {{messages|length}} Message(s) for you:</h4>
+                <hr class="bg-light">
+
+                {% for message in messages %}
+                    <h4>{{message.sender}} said {{message.time_span()}}:</h4>
+                    <p>{{message.content}}</p>
+                    {{message.id}}
+                    <div>
+                        <a href="/destroy/message/{{message.id}}" class="btn btn-danger">Delete</a>
+                    </div>
+                {% endfor %}
+<!-- End left Side -->
+            </div>
+<!-- Start Right Side -->
+            <div class="right col-5 m-2 mx-auto p-2 bg-secondary rounded">
+                <h4 class='text-center'>Send a message: </h4>
+                <hr class="bg-light">
+
+                {% for user in userbase %}
+                    {% if user.id != session.user_id %}
+                    <form class="m-2" action='/create_message' method="POST" >
+                        <input type="hidden" name="sender_id" value="{{session.user_id}}">
+                        <input type="hidden" name="receiver_id" value="{{user.id}}">
+                        <label class="form-label mb-2 " for="receiver_id">Send to: {{user.first_name}} {{user.last_name}}</label>
+                        <textarea class="form-control mb-2 " name="content"></textarea>
+                        <div class="text-center">
+                            <button class="btn btn-success " type="submit">Send</button>
+                        </div>
+                    </form>
+                    {% endif %}
+                {% endfor %}
+<!-- End Right Side -->
+            </div>
+                
+<!-- End Main Page -->
+            </div>
+<!-- end container -->
+        </div>
+</body>
+</html>
