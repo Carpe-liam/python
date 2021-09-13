@@ -3,7 +3,7 @@ from flask_app import app
 from flask_bcrypt import Bcrypt
 bcrypt = Bcrypt(app)
 from flask_app.models.user import User
-#from flask_app.models.recipe import Recipe
+from flask_app.models.recipe import Recipe
 from flask_app.controllers import recipes
 
 
@@ -42,8 +42,9 @@ def show_dashboad():
     data = {
         'id' : session['user_id']
     }
+    recipes = Recipe.get_all_recipes()
     user = User.locate_by_id(data)
-    return render_template("dashboard.html", user=user)
+    return render_template("dashboard.html", user=user, recipes=recipes)
 
 
 @app.route('/logout')

@@ -28,6 +28,9 @@ def create():
 def login():
     if not User.locate_user(request.form):
         return redirect('/')
+    if 'user_id' not in session:
+        flash("please login", "login")
+        return redirect('/')
     user = User.locate_user(request.form)
     if not bcrypt.check_password_hash(user.password, request.form['password']):
         return redirect('/')
