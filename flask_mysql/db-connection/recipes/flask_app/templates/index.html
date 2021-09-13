@@ -65,6 +65,9 @@
                         {% for message in  get_flashed_messages(category_filter='no_user')  %}
                             <p class="alert alert-danger p-1">{{message}}</p> 
                         {% endfor %}   
+                        {% for message in  get_flashed_messages(category_filter='login')  %}
+                            <p class="alert alert-danger p-1">{{message}}</p> 
+                        {% endfor %}   
                         <button type="submit" class="btn btn-success px-4 mt-3">Login</button>
                     </form>
         <!-- end right div -->
