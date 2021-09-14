@@ -39,7 +39,7 @@ class User:
         INSERT INTO users (first_name, last_name, email, password)
         VALUES (  %(first_name)s, %(last_name)s, %(email)s, %(password)s  );
         """
-        return connectToMySQL(DATABASE).query_db(query, data) # returns id
+        return connectToMySQL(DATABASE).query_db(query, data) # returns users.id for this user
 
 
     @classmethod
@@ -78,9 +78,6 @@ class User:
 
         if len(user['password']) < 8 :
             errors['password'] = 'Password should be at least 8 characters.'
-
-        if user['password'] != user['password_check']:
-            errors['password_check'] = 'Passwords do not match'
 
         if user['password'] != user['password_check']:
             errors['password_check'] = 'Passwords do not match'

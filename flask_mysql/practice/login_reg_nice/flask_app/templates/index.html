@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <title>Welcome!</title>
+</head>
+<body class="bg-dark">
+<div class="container-sm mx-auto d-flex justify-content-center">
+    <!-- start left div -->
+            <div class="left col-5 rounded bg-warning m-3 mx-2 p-4">
+                <h2 class="text-center">Register</h2>
+    
+                <form action="/register_user" method="POST">
+                    <label class="mt-2 form-label" for="first_name">First Name: </label>
+                    <input class="form-control" type="text" name="first_name" id="first_name">
+                    {% for message in  get_flashed_messages(category_filter='first_name')  %}
+                        <p class="alert alert-danger p-1">{{message}}</p> 
+                    {% endfor %}   
+                    
+                    <label class="mt-2 form-label" for="last_name">Last Name: </label>
+                    <input class="form-control" type="text" name="last_name" id="last_name">
+                    {% for message in  get_flashed_messages(category_filter='last_name')  %}
+                        <p class="alert alert-danger p-1">{{message}}</p> 
+                    {% endfor %}   
+                    
+                    <label class="mt-2 form-label" for="email">Email: </label>
+                    <input class="form-control" type="text" name="email" id="email">
+                    {% for message in  get_flashed_messages(category_filter='email')  %}
+                        <p class="alert alert-danger p-1">{{message}}</p> 
+                    {% endfor %}   
+                    {% for message in  get_flashed_messages(category_filter='invalid_email')  %}
+                        <p class="alert alert-danger p-1">{{message}}</p> 
+                    {% endfor %}   
+                    
+                    <label class="mt-2 form-label" for="password">Password: </label>
+                    <input class="form-control" type="password" name="password" id="password">
+                    {% for message in  get_flashed_messages(category_filter='password')  %}
+                        <p class="alert alert-danger p-1">{{message}}</p> 
+                    {% endfor %}   
+                    
+                    <label class="mt-2 form-label" for="password_check">Password: </label>
+                    <input class="form-control" type="password" name="password_check" id="password_check">
+                    {% for message in  get_flashed_messages(category_filter='password_check')  %}
+                        <p class="alert alert-danger p-1">{{message}}</p> 
+                    {% endfor %}   
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-dark px-4 mt-4">Register</button>
+                    </div>
+                </form>
+    
+    <!-- end left div -->
+            </div>
+    <!-- start right div -->
+            <div class="right col-5 rounded bg-secondary text-light m-3 mx-2 p-4">
+                <h2 class="text-center">Login</h2>
+                <form class="mt-5" action='/login' method="POST">
+                    <label class="mt-2 form-label" for="email">Email: </label>
+                    <input class="form-control" type="text" name="email" id="email">
+    
+                    <label class="mt-2 form-label" for="password">Password: </label>
+                    <input class="form-control" type="password" name="password" id="password">
+                    {% for message in  get_flashed_messages(category_filter="no_user")  %}
+                        <p class="alert alert-danger p-1">{{message}}</p> 
+                    {% endfor %}
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-success px-4 mt-3">Login</button>
+                    </div>   
+                </form>
+    <!-- end right div -->
+            </div>
+    <!-- end container -->
+</body>
+</html>

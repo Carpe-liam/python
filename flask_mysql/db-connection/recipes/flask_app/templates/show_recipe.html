@@ -25,7 +25,7 @@
             <h2 class="card-title">{{recipe.name}}</h2>
             <p class="card-text">Description: {{recipe.description}}</p>
             <p class="card-text">Under 30: {{recipe.under_30}}</p>
-            <p class="card-text">Instructions: {{recipe.instructions}}</p>
+            <p class="card-text">Instructions: {{recipe.instructions | safe }}</p>
             <p class="card-text">Made On: {{recipe.date_made_on.strftime('%a %b %d %Y')}}</p>
         </div>
 <!-- end main -->

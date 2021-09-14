@@ -45,6 +45,9 @@ def welcome():
     user = User.locate_by_id(data)
     return render_template("welcome_user.html", user=user)
 
+@app.route()
+def pw():
+    pass
 
 @app.route('/logout')
 def logout():
