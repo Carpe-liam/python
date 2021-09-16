@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <title>Userpage</title>
+</head>
+<body class="bg-dark text-light">
+
+<div class="container mx-auto">
+    <div class="navbar d-flex justify-content-between bg-secondary rounded px-4">
+        <div>
+            <h3 sclass="mx-3"> Welcome {{user.username}} </h3>
+        </div>
+        <div>
+            <a class="btn btn-light text-danger px-3" href="/userpage">Home</a>
+            <a class="btn btn-outline-danger px-3 mx-4" href="/logout">Logout</a>
+        </div>
+<!-- End navbar -->
+    </div>
+    <div class="mainpage my-3 p-3">
+
+    </div>
+    {% if question.user_id == user.id %}
+    <form class="col-6 mx-auto" action="/create_question" method="POST">
+        <input type="hidden" name="user_id" value={user.id}>
+        <div class="mb-3">
+            <label class="form-label" for="title"><h3>Question: </h3></label>
+            <input class="form-control" type="text" name="title" value="{{question.title}}">
+            {% for message in  get_flashed_messages(category_filter='title')  %}
+                <p class="alert alert-danger p-1">{{message}}</p> 
+            {% endfor %}   
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="description"><h3>Description: </h3></label>
+            <textarea class="form-control" type="text" name="description" rows="4">{{question.description}}</textarea>
+        </div>
+            {% for answer in answers %}
+                <div class="bg-secondary my-4 rounded p-3">
+                    <h5>{{answer.owner}}</h5>
+                    <p>{{answer.content}}</p>
+                </div>
+            {% endfor %}
+        <div class="mb-3 text-center">
+                <a class="btn btn-light text-danger px-4" href=""> Update </a>
+                <a class="btn btn-outline-danger text-light px-4" href=""> Delete </a>
+            </div>
+    </form>
+
+
+        {% else %}
+
+
+
+            <div class="question col-6 mx-auto">
+                <div class="my-2">
+                    <h4 class="text-center">{{question.title}}</h4>
+                    <hr class="text-danger">
+                    <p>{{question.description}}</p>
+                </div>
+                {% for answer in answers %}
+                    <div class="bg-secondary my-4 rounded p-3">
+                        <h6>{{answer.owner}}</h6>
+                        <hr class="text-dark">
+                        <div class="d-flex justify-content-between">
+                            <p>{{answer.content}}</p>
+                            <a class="btn btn-light text-danger" href="">Like</a>
+                        </div>
+                    </div>
+                {% endfor %}
+                <div class="answer mt-3">
+                    <form action="/submit_answer" method="POST">
+                        <label for="content"><h4>Submit your answer:</h4></label>
+                        <textarea class="form-control" type="text" name="content" rows="4"></textarea>
+                        <label for="user_id"></label>
+                        <input type="hidden" name="user_id" value={{user.id}}>
+                        <label for="question_id"></label>
+                        <input type="hidden" name="question_id" value={{question.id}}>
+                        <div class='text-center mt-4'>
+                            <button class="btn btn-light text-danger px-4" type="submit">Submit</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        {% endif %}
+
+
+
+<!-- end container -->
+</div>
+
+</body>
+</html>
