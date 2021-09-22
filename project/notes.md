@@ -1,3 +1,0 @@
-- for importance, sort by value
-- make sure to set default user image/description
--  

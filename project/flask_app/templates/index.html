@@ -4,10 +4,87 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
     <title>Login</title>
 </head>
 <body>
-    
+
+<div class="container mx-auto d-flex justify-content-center my-4 ">
+    <div class="login col-6 m-2 p-3">
+        <h1>Login</h1>
+        <form action="/login" method="post">
+
+                <label class="form-label" for="username">Username: </label>
+                <input class="form-control" type="text" name="username" id="username">
+                {% for message in  get_flashed_messages(category_filter='username')  %}
+                    <p class="alert alert-danger p-1">{{message}}</p> 
+                {% endfor %}
+
+                <label class="form-label" for="password">Password: </label>
+                <input class="form-control" type="password" name="password" id="password">
+                {% for message in  get_flashed_messages(category_filter='password')  %}
+                    <p class="alert alert-danger p-1">{{message}}</p>
+                {% endfor %}
+
+            <div>
+                <button class="btn btn-primary px-3 mt-3" type="submit">Login</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="register col-6 m-2 p-3">
+        <h1>Sign Up</h1>
+        <form action="/register", method="POST">
+                <label class="form-label" for="first_name">First Name: </label>
+                <input class="form-control" type="text" name="first_name" id="first_name">
+                {% for message in get_flashed_messages(category_filter='first_name')  %}
+                    <p class="alert alert-danger p-1">{{message}}</p> 
+                {% endfor %}
+
+                <label class="form-label" for="last_name">Last Name: </label>
+                <input class="form-control" type="text" name="last_name" id="last_name">
+                {% for message in get_flashed_messages(category_filter='last_name')  %}
+                    <p class="alert alert-danger p-1">{{message}}</p> 
+                {% endfor %}
+
+                <label class="form-label" for="username">Username: </label>
+                <input class="form-control" type="text" name="username" id="username">
+                {% for message in get_flashed_messages(category_filter='username')  %}
+                    <p class="alert alert-danger p-1">{{message}}</p> 
+                {% endfor %}
+
+                {% for message in get_flashed_messages(category_filter='invalid_username')  %}
+                    <p class="alert alert-danger p-1">{{message}}</p> 
+                {% endfor %}
+
+                <label class="form-label" for="email">Email: </label>
+                <input class="form-control" type="text" name="email" id="email">
+                {% for message in get_flashed_messages(category_filter='email')  %}
+                    <p class="alert alert-danger p-1">{{message}}</p> 
+                {% endfor %}
+                {% for message in get_flashed_messages(category_filter='invalid_email')  %}
+                    <p class="alert alert-danger p-1">{{message}}</p> 
+                {% endfor %}
+
+                <label class="form-label" for="password">Password: </label>
+                <input class="form-control" type="password" name="password" id="password">
+                {% for message in get_flashed_messages(category_filter='password')  %}
+                    <p class="alert alert-danger p-1">{{message}}</p> 
+                {% endfor %}
+
+                <label class="form-label" for="confirm_pw">Confirm Password: </label>
+                <input class="form-control" type="password" name="confirm_pw" id="confirm_pw">
+                {% for message in get_flashed_messages(category_filter='confirm_pw')  %}
+                    <p class="alert alert-danger p-1">{{message}}</p> 
+                {% endfor %}
+
+            <div>
+                <button class="btn btn-primary px-3 mt-3" type="submit">Sign Up</button>
+            </div>
+        </form>
+    </div>
+</div>
+
 </body>
 </html>

@@ -32,6 +32,23 @@ LEFT JOIN notes
 ON tasks.id = notes.task_id
 ORDER BY tasks.importance and tasks.created_at ASC;
 
+SELECT * FROM users
+WHERE users.email = "karma@mal.com";
+
+SELECT tasks.id AS task_id, tasks.*, users.* FROM tasks
+LEFT JOIN users
+ON tasks.user_id = users.id
+WHERE tasks.id = 2;
+
+UPDATE tasks
+SET title = "Ignore Bubbas"
+WHERE tasks.id = 2;
+
+UPDATE users
+SET users.id = 1
+WHERE users.username = "Karma";
+
+
 
 
 

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Document</title>
+</head>
+<body>
+
+<div class="container">
+
+
+<div class="main">
+    
+    <div class="navbar d-flex justify-content-betwen">
+        <div>
+            <h1>{{user.first_name}}'s Profile</h1>
+        </div>
+        <div>
+            <p>due today: #</p>
+        </div>
+        <div>
+            <a class="btn btn-outline-danger" href="/logout">Logout</a>
+        </div>
+    </div>
+    <hr>
+    <div class="incomplete">
+        <div class="d-flex">
+            <div class="m-1">
+                <h2 class="my-1 align middle">Uncompleted Tasks: {{tasks |length}}</h2>
+            </div>
+            <div >
+                <p class="my-1 ms-6 py-2 align-middle">progress bar here</p>
+            </div>
+        </div>
+        <hr>
+        {% for task in tasks %}
+        <div class="d-flex justify-content-between px-2">
+            <div>
+                <h4>{{task.title}}</h4>
+                <h5>{{task.created_at.strftime('%a %b %d %Y')}}</h5>
+                <hr>
+                <p>{{task.description}}</p>
+            </div>
+            <div>
+                <a class="btn btn-primary" href="">View</a>
+                <a class="btn btn-primary" href="">Edit</a>
+                <a class="btn btn-primary" href="">Delete</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    
+    
+    <div class="complete">
+        <h2>Completed Tasks: </h2>
+        <hr>
+        {% for task in tasks %}
+        <div class="d-flex justify-content-between px-2">
+            <div>
+                <h4>{{task.title}}</h4>
+                <h5>{{task.created_at.strftime('%a %b %d %Y')}}</h5>
+                <hr>
+                <p>{{task.description}}</p>
+            </div>
+            <div>
+                <a class="btn btn-primary" href="">View</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+</div>
+
+<div class="profile">
+    
+
+
+
+</div>
+    
+    
+</div>
+
+</body>
+</html>
