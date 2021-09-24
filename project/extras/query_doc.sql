@@ -38,7 +38,7 @@ WHERE users.email = "karma@mal.com";
 SELECT tasks.id AS task_id, tasks.*, users.* FROM tasks
 LEFT JOIN users
 ON tasks.user_id = users.id
-WHERE tasks.id = 2;
+WHERE tasks.user_id = 1;
 
 UPDATE tasks
 SET title = "Ignore Bubbas"
@@ -47,6 +47,22 @@ WHERE tasks.id = 2;
 UPDATE users
 SET users.id = 1
 WHERE users.username = "Karma";
+
+SELECT * FROM tasks
+LEFT JOIN users
+ON tasks.user_id = users.id
+WHERE users.id = 1
+ORDER BY tasks.due_by, tasks.importance ASC;
+
+SELECT COUNT(tasks.id) AS num_tasks FROM tasks
+LEFT JOIN users
+ON tasks.user_id = users.id
+WHERE tasks.due_by = "2021-09-23" AND tasks.completed = 0 AND tasks.user_id = 1
+
+
+
+
+
 
 
 

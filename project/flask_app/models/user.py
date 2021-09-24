@@ -1,4 +1,5 @@
 from flask import flash
+from datetime import date
 from flask_app.config.mysqlconnection import connectToMySQL
 from flask_app import DATABASE, app
 import re
@@ -12,17 +13,41 @@ class User:
         self.username = data['username']
         self.email = data['email']
         self.password = data['password']
+        self.img_path = data['img_path']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
+
+
+    @property
+    def task_num(self):
+        query = f"""
+        SELECT COUNT(tasks.id) AS num_tasks FROM tasks
+        LEFT JOIN users
+        ON tasks.user_id = users.id
+        WHERE tasks.due_by = '{date.today()}' AND tasks.completed = 0 AND tasks.user_id = {self.id} ;
+        """
+        results = connectToMySQL(DATABASE).query_db(query)
+        return results[0]['num_tasks']
 
 
     @classmethod
     def create_user(cls, data):
         query = """
         INSERT INTO users (first_name, last_name, username, email, password)
-        VALUES (  %(first_name)s, %(last_name)s, %(username)s, %(email)s, %(password)s  )
+        VALUES (  %(first_name)s, %(last_name)s, %(username)s, %(email)s, %(password)s  ) ;
         """
         return connectToMySQL(DATABASE).query_db(query, data)
+
+
+    @classmethod
+    def upload_avatar(cls, **data):
+        query = """
+        UPDATE users
+        SET users.img_path = %(img_path)s
+        WHERE users.id = %(id)s ;
+        """
+        return connectToMySQL(DATABASE).query_db(query, data)
+
 
     @classmethod
     def get_one_username(cls, data):
@@ -45,6 +70,26 @@ class User:
         print("Got by id")
         print(results)
         return cls(results[0])
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     @staticmethod

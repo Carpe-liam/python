@@ -1,9 +1,11 @@
+from flask import flash, session, render_template, redirect, request
 from flask_app import app
+import os
 from flask_bcrypt import Bcrypt
 bcrypt = Bcrypt(app)
-from flask import flash, session, render_template, redirect, request
 from flask_app.models.user import User
 from flask_app.models.task import Task
+from flask_app.models.note import Note
 from flask_app.controllers import tasks, notes
 
 @app.route("/")
@@ -19,6 +21,21 @@ def login():
         return redirect("/")
     session['user_id'] = user.id
     return redirect("/dashboard")
+
+
+@app.post('/profile/update')
+def update_profile():
+    if 'user_id' not in session:
+        return redirect("/")
+    avatar = request.files.get('avatar')
+    if avatar:
+        avatar.save(os.path.join(app.static_folder, f"img/{session['user_id']}.webp"))
+    User.upload_avatar(
+        img_path=f"/img/{session['user_id']}.webp",
+        id = session['user_id']
+    )
+    return redirect('/dashboard')
+
 
 @app.route("/register", methods=["POST"])
 def register_user():
@@ -44,7 +61,11 @@ def show_dashboard():
     }
     user = User.get_one_id(data)
     tasks = Task.get_user_tasks(data)
-    return render_template("dashboard.html", user=user, tasks=tasks)
+    incomplete = Task.get_incomplete_tasks(data)
+    print("~"*80)
+    print("tasknum: " )
+    print("~"*80)
+    return render_template("dashboard.html", user=user, tasks=tasks, incomplete=incomplete)
 
 @app.route("/logout")
 def logout():
