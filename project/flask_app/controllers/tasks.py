@@ -41,6 +41,7 @@ def edit_task(id):
         "id":id
     }
     task = Task.get_one_task(data)
+    print(task.__dict__)
     notes = Note.get_all_notes(data)
     userID = {
         "id" : session['user_id']

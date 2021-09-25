@@ -5,29 +5,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
     <title>Document</title>
 </head>
-<body>
+<body id="body3">
 
-<div class="container">
-
-    <div class="navbar d-flex justify-content-betwen">
-        <div>
-            <h1>{{user.first_name}}'s Profile</h1>
-        </div>
-        <div>
-            <p>due today: #</p>
-        </div>
-        <div>
-            <a class="btn btn-outline-primary" href="/dashboard">Dashboard</a>
-            <a class="btn btn-outline-danger" href="/logout">Logout</a>
-        </div>
+<div id="navbar" class="navbar d-flex justify-content-around px-5 mx-auto">
+    <div>
+        <h1 id="font1" >{{user.first_name}}'s Profile</h1>
     </div>
-    <hr>
+    <div>
+        <h4 id="font1">Due Today: {{user.task_num}}</h4>
+    </div>
+    <div>
+        <a class="btn btn-light mx-3" href="/dashboard">Dashboard</a>
+        <a class="btn btn-danger mx-3" href="/logout">Logout</a>
+    </div>
+</div>
 
-    <div class="task">
-        <form class="d-flex mx-auto justify-content-center" action="/create_task" method="POST">
+    <div class="container">
+    
+    <div id="showform" class="task my-5 p-3 rounded">
+        <form class="d-flex mx-auto justify-content-center p-4" action="/create_task" method="POST">
             <input type="hidden" name="user_id" value={{user.id}}>
             <div class="left mx-5">
                 <label class="form-label" for="title">Task Title: </label>
@@ -60,12 +59,10 @@
                 {% for message in get_flashed_messages(category_filter='importance')  %}
                     <p class="alert alert-danger p-1">{{message}}</p> 
                 {% endfor %}
-                <div>
-                    <button type="submit">Create</button>
+                <div class="text-center my-3">
+                    <button class="btn" id="subbutt" type="submit">Create</button>
                 </div>
             </div>
-
-
         </form>
 
 

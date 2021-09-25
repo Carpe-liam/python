@@ -1,5 +1,110 @@
 @import url('https://fonts.googleapis.com/css2?family=Patrick+Hand+SC&display=swap');
 
 *{
+    font-family: sans-serif;
+}
+
+
+#font1{
     font-family: 'Patrick Hand SC', cursive;
+}
+
+body {
+    background: #E6EFE9;
+    color: #2E382E;
+}
+
+#navbar{
+    background: #8F8389;
+}
+
+
+/* DASHBOARD STYLES */
+#dashcontainer{
+    display: flex;
+    justify-content: center;
+}
+#tasks{
+    background: #A7C4A0;
+}
+
+#progbar{
+    background: #8F8389;
+}
+
+#dashleft{
+    background: #C2EABA
+}
+
+#profile{
+    background: #A7C4A0;
+    min-width: 400px;
+}
+
+#incomplete{
+    background: #C5F4E0;
+}
+
+#taskbuts{
+    background: #8F8389;
+}
+
+#complete{
+    background: #2E382E;
+    color: #E6EFE9;
+}
+
+/* SHOW TASK */
+#body1{
+    background: #2E382E;
+}
+#showtask{
+    background: #C2EABA;
+}
+
+#notes{
+    background: #C2EABA;
+}
+
+#postnotes{
+    background: #E6EFE9;
+}
+
+#postbut{
+    background: #8F8389;
+    color: #2E382E;
+}
+
+/* Edit Page */
+#body2{
+    background: #2E382E;
+}
+
+#subbutt{
+    background: #8F8389;
+    color: #2E382E;
+}
+
+#taskedit{
+    background: #C2EABA;
+}
+
+/* Create Task */
+#body3{
+    background: #2E382E;
+}
+
+#showform{
+    background: #C2EABA;
+}
+
+
+/* Reg Page */
+#login{
+    background: #C2EABA;
+}
+
+#register{
+    background: #2E382E;
+    color: #E6EFE9;
 }

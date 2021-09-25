@@ -15,13 +15,13 @@ class Note:
         now = datetime.now()
         delta = now - self.created_at
         if delta.days > 0:
-            return f"{delta.days} days ago"
+            return f"{delta.days} day(s) ago"
         elif (math.floor(delta.total_seconds() / 60)) >= 60:
-            return f"{math.floor(math.floor(delta.total_seconds() / 60)/60)} hours ago"
+            return f"{math.floor(math.floor(delta.total_seconds() / 60)/60)} hour(s) ago"
         elif delta.total_seconds() >= 60:
-            return f"{math.floor(delta.total_seconds() / 60)} minutes ago"
+            return f"{math.floor(delta.total_seconds() / 60)} minute(s) ago"
         else:
-            return f"{math.floor(delta.total_seconds())} seconds ago"
+            return f"{math.floor(delta.total_seconds())} second(s) ago"
 
     @classmethod
     def get_all_notes(cls, data):
